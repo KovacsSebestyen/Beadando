@@ -3,11 +3,14 @@ package hu.sebestyen.foxandhounds.service.map;
 import hu.sebestyen.foxandhounds.model.MapVO;
 import hu.sebestyen.foxandhounds.service.exeption.MapParsingExeption;
 
+import java.util.Arrays;
+
 public class MapParser {
 
     private final int mapSize;
 
     public MapParser(int mapSize) {
+
         this.mapSize=mapSize;
     }
 
@@ -16,16 +19,17 @@ public class MapParser {
         checkSize(mapSize);
 
         char[][] map=getMap();
+
         boolean[][] closed=getClosed();
 
         return new MapVO(mapSize,map,closed);
     }
 
     public void checkSize(int mapSize) throws MapParsingExeption {
-        if(mapSize<=4){
+        if(mapSize<4){
             throw new MapParsingExeption("Size of map has to be minimum 4!");
         }
-        if(mapSize>=12){
+        if(mapSize>12){
             throw new MapParsingExeption("Size of map has to be maximum 12!");
         }
         if(mapSize%2!=0){

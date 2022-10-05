@@ -50,8 +50,8 @@ public class MapVO {
     @Override
     public String toString() {
         return "MapVO{" +
-                "numberOfRows=" + mapSize +
-                ", map=" + Arrays.toString(map) +
+                "mapSize=" + mapSize +
+                ",\nmap=\n" + getMapAsString() +
                 ", closed=" + Arrays.toString(closed) +
                 '}';
     }
@@ -78,5 +78,24 @@ public class MapVO {
             }
         }
         return result;
+    }
+
+    /*public void printMap() {
+        for (int i = 0; i < mapSize; i++) {
+            for (int j = 0; j < mapSize; j++) {
+                System.out.print(map[i][j]);
+            }
+            System.out.println("");
+        }
+    }*/
+    public String getMapAsString() {
+        String ma = new String();
+        for (int i = 0; i < mapSize; i++) {
+            for (int j = 0; j < mapSize; j++) {
+                ma+=map[i][j];
+            }
+            ma+="\n";
+        }
+        return ma;
     }
 }
