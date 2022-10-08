@@ -1,0 +1,4 @@
+hu\sebestyen\foxandhounds\service\exeption\MapParsingExeption.class
+hu\sebestyen\foxandhounds\model\MapVO.class
+hu\sebestyen\foxandhounds\Main.class
+hu\sebestyen\foxandhounds\service\map\MapParser.class

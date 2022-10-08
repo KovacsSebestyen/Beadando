@@ -15,7 +15,7 @@ public class MapVO {
         this.closed = deepCopy(closed);
     }
 
-    public int getNumberOfRows() {
+    public int getMapSize() {
         return mapSize;
     }
 
@@ -49,11 +49,9 @@ public class MapVO {
 
     @Override
     public String toString() {
-        return "MapVO{" +
-                "mapSize=" + mapSize +
-                ",\nmap=\n" + getMapAsString() +
-                ", closed=" + Arrays.toString(closed) +
-                '}';
+        return "Size: " + mapSize +
+                ",\nMap:\n" + getMapAsString() +
+                ", Closed:\n" + getClosedAsString();
     }
 
     public char[][] deepCopy(char[][] array) {
@@ -89,13 +87,29 @@ public class MapVO {
         }
     }*/
     public String getMapAsString() {
-        String ma = new String();
+        String mapString = new String();
         for (int i = 0; i < mapSize; i++) {
             for (int j = 0; j < mapSize; j++) {
-                ma+=map[i][j];
+                mapString+=map[i][j]+" ";
             }
-            ma+="\n";
+            mapString+="\n";
         }
-        return ma;
+        return mapString;
+    }
+
+    public String getClosedAsString() {
+        String closedString = new String();
+        for (int i = 0; i < mapSize; i++) {
+            for (int j = 0; j < mapSize; j++) {
+                if(closed[i][j]) {
+                    closedString+="true, ";
+                }
+                else {
+                    closedString+="false, ";
+                }
+            }
+            closedString+="\n";
+        }
+        return closedString;
     }
 }

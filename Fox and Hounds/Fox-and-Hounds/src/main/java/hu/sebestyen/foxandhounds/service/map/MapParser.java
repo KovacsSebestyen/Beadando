@@ -52,7 +52,22 @@ public class MapParser {
             }
             else{
                 for(int j=0; j < mapSize; j++){
-                    map[i][j]='X';
+                    if(i%2!=0) {
+                        if(j%2==0) {
+                            map[i][j]='_';
+                        }
+                        else {
+                            map[i][j]='X';
+                        }
+                    }
+                    else {
+                        if(j%2!=0){
+                            map[i][j]='_';
+                        }
+                        else {
+                            map[i][j]='X';
+                        }
+                    }
                 }
             }
         }
