@@ -3,18 +3,16 @@ package hu.sebestyen.foxandhounds.service.map;
 import hu.sebestyen.foxandhounds.model.MapVO;
 import hu.sebestyen.foxandhounds.service.exeption.MapParsingExeption;
 
-import java.util.Arrays;
-
-public class MapParser {
+public class MapBuilder {
 
     private final int mapSize;
 
-    public MapParser(int mapSize) {
+    public MapBuilder(int mapSize) {
 
         this.mapSize=mapSize;
     }
 
-    public MapVO parse() throws MapParsingExeption {
+    public MapVO build() throws MapParsingExeption {
 
         checkSize(mapSize);
 

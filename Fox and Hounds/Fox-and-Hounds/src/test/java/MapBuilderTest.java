@@ -1,13 +1,13 @@
 import hu.sebestyen.foxandhounds.service.exeption.MapParsingExeption;
 import hu.sebestyen.foxandhounds.model.MapVO;
-import hu.sebestyen.foxandhounds.service.map.MapParser;
+import hu.sebestyen.foxandhounds.service.map.MapBuilder;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class MapParserTest {
-    private MapParser underTest;
+public class MapBuilderTest {
+    private MapBuilder underTest;
 
     private static char[][] map={
             {'X','H','X','H'},
@@ -19,47 +19,47 @@ public class MapParserTest {
     private static MapVO exeptedMapOV = new MapVO(4,map);
 
     @Test
-    public void testParseShouldReturnNewParse() throws MapParsingExeption {
+    public void testBuildShouldReturnNewParse() throws MapParsingExeption {
         //given
-        underTest = new MapParser(4);
+        underTest = new MapBuilder(4);
 
         //then
-        MapVO result= underTest.parse();
+        MapVO result= underTest.build();
 
         //when
         assertEquals(exeptedMapOV, result);
     }
 
     @Test
-    public void testParseShouldThrowMapParsingExeptionWhenGivenNumberLessThen4() throws MapParsingExeption {
+    public void testBuildShouldThrowMapParsingExeptionWhenGivenNumberLessThen4() throws MapParsingExeption {
         //given
-        underTest =new MapParser(2);
+        underTest =new MapBuilder(2);
 
         //when-then
         assertThrows(MapParsingExeption.class, ()->{
-            underTest.parse();
+            underTest.build();
         });
     }
 
     @Test
-    public void testParseShouldThrowMapParsingExeptionWhenGivenNumberMoreThen12() throws MapParsingExeption {
+    public void testBuildShouldThrowMapParsingExeptionWhenGivenNumberMoreThen12() throws MapParsingExeption {
         //given
-        underTest =new MapParser(14);
+        underTest =new MapBuilder(14);
 
         //when-then
         assertThrows(MapParsingExeption.class, ()->{
-            underTest.parse();
+            underTest.build();
         });
     }
 
     @Test
-    public void testParseShouldThrowMapParsingExeptionWhenGivenNumberDoesntEvenNumber() throws MapParsingExeption {
+    public void testBuildShouldThrowMapParsingExeptionWhenGivenNumberDoesntEvenNumber() throws MapParsingExeption {
         //given
-        underTest =new MapParser(7);
+        underTest =new MapBuilder(7);
 
         //when-then
         assertThrows(MapParsingExeption.class, ()->{
-            underTest.parse();
+            underTest.build();
         });
     }
 }

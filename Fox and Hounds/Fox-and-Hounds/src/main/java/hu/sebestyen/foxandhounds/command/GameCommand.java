@@ -2,7 +2,7 @@ package hu.sebestyen.foxandhounds.command;
 
 import hu.sebestyen.foxandhounds.model.MapVO;
 import hu.sebestyen.foxandhounds.service.exeption.MapParsingExeption;
-import hu.sebestyen.foxandhounds.service.map.MapParser;
+import hu.sebestyen.foxandhounds.service.map.MapBuilder;
 
 import java.util.Scanner;
 
@@ -43,6 +43,6 @@ public class GameCommand {
         Scanner input = new Scanner(System.in);
         System.out.println("?Size?: ");
         size = Integer.parseInt(input.nextLine());
-        return startGameMap = new MapParser(size).parse();
+        return startGameMap = new MapBuilder(size).build();
     }
 }

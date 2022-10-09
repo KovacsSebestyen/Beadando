@@ -3,7 +3,6 @@ package hu.sebestyen.foxandhounds;
 import hu.sebestyen.foxandhounds.command.GameCommand;
 import hu.sebestyen.foxandhounds.model.MapVO;
 import hu.sebestyen.foxandhounds.service.exeption.MapParsingExeption;
-import hu.sebestyen.foxandhounds.service.map.MapParser;
 
 import java.util.Scanner;
 
