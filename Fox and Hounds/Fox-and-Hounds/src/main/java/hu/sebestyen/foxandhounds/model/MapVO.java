@@ -7,12 +7,10 @@ public class MapVO {
 
     private final int mapSize;
     private final char[][] map;
-    private final boolean[][] closed;
 
-    public MapVO(int mapSize, char[][] map, boolean[][] closed) {
+    public MapVO(int mapSize, char[][] map) {
         this.mapSize = mapSize;
         this.map = deepCopy(map);
-        this.closed = deepCopy(closed);
     }
 
     public int getMapSize() {
@@ -21,10 +19,6 @@ public class MapVO {
 
     public char[][] getMap() {
         return deepCopy(map);
-    }
-
-    public boolean[][] getClosed() {
-        return deepCopy(closed);
     }
 
     @Override
@@ -36,22 +30,20 @@ public class MapVO {
             return false;
         }
         MapVO mapVO = (MapVO) o;
-        return mapSize == mapVO.mapSize && Arrays.deepEquals(map, mapVO.map) && Arrays.deepEquals(closed, mapVO.closed);
+        return mapSize == mapVO.mapSize && Arrays.deepEquals(map, mapVO.map);
     }
 
     @Override
     public int hashCode() {
         int result = Objects.hash(mapSize);
         result = 31 * result + Arrays.deepHashCode(map);
-        result = 31 * result + Arrays.deepHashCode(closed);
         return result;
     }
 
     @Override
     public String toString() {
         return "Size: " + mapSize +
-                ",\nMap:\n" + getMapAsString() +
-                ", Closed:\n" + getClosedAsString();
+                ",\nMap:\n" + getMapAsString();
     }
 
     public char[][] deepCopy(char[][] array) {
@@ -66,26 +58,6 @@ public class MapVO {
         return result;
     }
 
-    public boolean[][] deepCopy(boolean[][] array) {
-        boolean[][] result = null;
-
-        if(array != null) {
-            result = new boolean[array.length][];
-            for (int i=0; i < array.length;i++){
-                result[i] = Arrays.copyOf(array[i],array[i].length);
-            }
-        }
-        return result;
-    }
-
-    /*public void printMap() {
-        for (int i = 0; i < mapSize; i++) {
-            for (int j = 0; j < mapSize; j++) {
-                System.out.print(map[i][j]);
-            }
-            System.out.println("");
-        }
-    }*/
     public String getMapAsString() {
         String mapString = new String();
         for (int i = 0; i < mapSize; i++) {
@@ -95,21 +67,5 @@ public class MapVO {
             mapString+="\n";
         }
         return mapString;
-    }
-
-    public String getClosedAsString() {
-        String closedString = new String();
-        for (int i = 0; i < mapSize; i++) {
-            for (int j = 0; j < mapSize; j++) {
-                if(closed[i][j]) {
-                    closedString+="true, ";
-                }
-                else {
-                    closedString+="false, ";
-                }
-            }
-            closedString+="\n";
-        }
-        return closedString;
     }
 }

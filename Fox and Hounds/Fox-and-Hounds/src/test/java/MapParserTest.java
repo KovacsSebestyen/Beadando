@@ -10,19 +10,13 @@ public class MapParserTest {
     private MapParser underTest;
 
     private static char[][] map={
-            {'X','K','X','K'},
+            {'X','H','X','H'},
             {'_','X','_','X'},
             {'X','_','X','_'},
             {'F','X','_','X'}
     };
 
-    private static boolean[][] closed={
-            {false,true,false,true},
-            {true,false,true,false},
-            {false,true,false,true},
-            {true,false,true,false}
-    };
-    private static MapVO exeptedMapOV = new MapVO(4,map,closed);
+    private static MapVO exeptedMapOV = new MapVO(4,map);
 
     @Test
     public void testParseShouldReturnNewParse() throws MapParsingExeption {

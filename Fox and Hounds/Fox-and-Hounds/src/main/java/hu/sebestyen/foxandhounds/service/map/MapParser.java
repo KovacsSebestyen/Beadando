@@ -20,9 +20,7 @@ public class MapParser {
 
         char[][] map=getMap();
 
-        boolean[][] closed=getClosed();
-
-        return new MapVO(mapSize,map,closed);
+        return new MapVO(mapSize,map);
     }
 
     public void checkSize(int mapSize) throws MapParsingExeption {
@@ -43,7 +41,7 @@ public class MapParser {
             if(i==0){
                 for(int j=0; j < mapSize; j++){
                     if(j%2!=0){
-                        map[i][j]='K';
+                        map[i][j]='H';
                     }
                     else{
                         map[i][j]='X';
@@ -73,30 +71,5 @@ public class MapParser {
         }
         map[mapSize-1][0]='F';
         return map;
-    }
-
-    public boolean[][] getClosed(){
-        boolean[][] closed = new boolean[mapSize][mapSize];
-        for(int i=0; i < mapSize; i++){
-            for(int j=0; j < mapSize; j++){
-                if(i%2==0){
-                    if(j%2!=0){
-                        closed[i][j]=true;
-                    }
-                    else{
-                        closed[i][j]=false;
-                    }
-                }
-                else{
-                    if(j%2==0){
-                        closed[i][j]=true;
-                    }
-                    else{
-                        closed[i][j]=false;
-                    }
-                }
-            }
-        }
-        return closed;
     }
 }
