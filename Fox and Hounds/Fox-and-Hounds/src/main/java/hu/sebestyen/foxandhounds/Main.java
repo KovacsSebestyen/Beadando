@@ -1,32 +1,24 @@
 package hu.sebestyen.foxandhounds;
 
-import hu.sebestyen.foxandhounds.command.GameCommand;
-import hu.sebestyen.foxandhounds.model.MapVO;
-import hu.sebestyen.foxandhounds.service.exeption.MapParsingExeption;
+import hu.sebestyen.foxandhounds.model.GameState;
+import hu.sebestyen.foxandhounds.service.command.GameCommands;
+import hu.sebestyen.foxandhounds.service.exception.ExitException;
+import hu.sebestyen.foxandhounds.service.exception.MapBuildingException;
 
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws MapParsingExeption {
+    public static void main(String[] args) throws MapBuildingException, ExitException {
         String inCommand="";
         Scanner input = new Scanner(System.in);
-        System.out.println("Hello :)\nMagic word?: ");
-        inCommand = input.nextLine();
-
-            while(!inCommand.equals("start")) {
-                System.out.println("Wrong :(\nTry again:");
-                inCommand = input.nextLine();
-            }
-
-            MapVO gameMap = null;
-            gameMap = new GameCommand(inCommand,gameMap).checkCommand();
-            System.out.println(gameMap.toString());
-
-            while(!inCommand.equals("exit")) {
-                System.out.println("Next command: ");
-                inCommand = input.nextLine();
-                gameMap = new GameCommand(inCommand,gameMap).checkCommand();
-                if(!inCommand.equals("exit"))System.out.println(gameMap.toString());
+        GameState gameState = new GameState(null, false, true,null,null);
+        while(gameState.isPlayerDontWantToExit()) {
+            System.out.print("?: ");
+            inCommand = input.nextLine();
+            gameState = new GameCommands(inCommand, gameState).checkCommand();
+            if(gameState.isPlayerDontWantToExit()) {
+                System.out.println(gameState.getMapVo().toString());
             }
         }
+    }
 }

@@ -1,7 +1,7 @@
 package hu.sebestyen.foxandhounds.service.map;
 
 import hu.sebestyen.foxandhounds.model.MapVO;
-import hu.sebestyen.foxandhounds.service.exeption.MapParsingExeption;
+import hu.sebestyen.foxandhounds.service.exception.MapBuildingException;
 
 public class MapBuilder {
 
@@ -12,7 +12,7 @@ public class MapBuilder {
         this.mapSize=mapSize;
     }
 
-    public MapVO build() throws MapParsingExeption {
+    public MapVO build() throws MapBuildingException {
 
         checkSize(mapSize);
 
@@ -21,15 +21,15 @@ public class MapBuilder {
         return new MapVO(mapSize,map);
     }
 
-    public void checkSize(int mapSize) throws MapParsingExeption {
+    public void checkSize(int mapSize) throws MapBuildingException {
         if(mapSize<4){
-            throw new MapParsingExeption("Size of map has to be minimum 4!");
+            throw new MapBuildingException("Size of map has to be minimum 4!");
         }
         if(mapSize>12){
-            throw new MapParsingExeption("Size of map has to be maximum 12!");
+            throw new MapBuildingException("Size of map has to be maximum 12!");
         }
         if(mapSize%2!=0){
-            throw new MapParsingExeption("Size of map has to be even number!");
+            throw new MapBuildingException("Size of map has to be even number!");
         }
     }
 

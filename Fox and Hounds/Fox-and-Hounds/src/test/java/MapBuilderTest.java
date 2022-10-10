@@ -1,4 +1,4 @@
-import hu.sebestyen.foxandhounds.service.exeption.MapParsingExeption;
+import hu.sebestyen.foxandhounds.service.exception.MapBuildingException;
 import hu.sebestyen.foxandhounds.model.MapVO;
 import hu.sebestyen.foxandhounds.service.map.MapBuilder;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ public class MapBuilderTest {
     private static MapVO exeptedMapOV = new MapVO(4,map);
 
     @Test
-    public void testBuildShouldReturnNewParse() throws MapParsingExeption {
+    public void testBuildShouldReturnNewParse() throws MapBuildingException {
         //given
         underTest = new MapBuilder(4);
 
@@ -31,34 +31,34 @@ public class MapBuilderTest {
     }
 
     @Test
-    public void testBuildShouldThrowMapParsingExeptionWhenGivenNumberLessThen4() throws MapParsingExeption {
+    public void testBuildShouldThrowMapParsingExeptionWhenGivenNumberLessThen4() throws MapBuildingException {
         //given
         underTest =new MapBuilder(2);
 
         //when-then
-        assertThrows(MapParsingExeption.class, ()->{
+        assertThrows(MapBuildingException.class, ()->{
             underTest.build();
         });
     }
 
     @Test
-    public void testBuildShouldThrowMapParsingExeptionWhenGivenNumberMoreThen12() throws MapParsingExeption {
+    public void testBuildShouldThrowMapParsingExeptionWhenGivenNumberMoreThen12() throws MapBuildingException {
         //given
         underTest =new MapBuilder(14);
 
         //when-then
-        assertThrows(MapParsingExeption.class, ()->{
+        assertThrows(MapBuildingException.class, ()->{
             underTest.build();
         });
     }
 
     @Test
-    public void testBuildShouldThrowMapParsingExeptionWhenGivenNumberDoesntEvenNumber() throws MapParsingExeption {
+    public void testBuildShouldThrowMapParsingExeptionWhenGivenNumberDoesntEvenNumber() throws MapBuildingException {
         //given
         underTest =new MapBuilder(7);
 
         //when-then
-        assertThrows(MapParsingExeption.class, ()->{
+        assertThrows(MapBuildingException.class, ()->{
             underTest.build();
         });
     }
