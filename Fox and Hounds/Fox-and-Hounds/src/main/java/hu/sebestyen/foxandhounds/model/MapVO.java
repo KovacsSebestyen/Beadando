@@ -6,7 +6,11 @@ import java.util.Objects;
 public class MapVO {
 
     private final int mapSize;
-    private final char[][] map;
+    private char[][] map;
+
+    public void setMap(char[][] map) {
+        this.map = map;
+    }
 
     public MapVO(int mapSize, char[][] map) {
         this.mapSize = mapSize;

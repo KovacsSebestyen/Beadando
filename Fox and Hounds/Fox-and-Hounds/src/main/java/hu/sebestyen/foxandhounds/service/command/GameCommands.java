@@ -17,20 +17,19 @@ public class GameCommands {
 
     public String[] splitCommand() {
         splitCommand = command.split(" ");
-        System.out.println(splitCommand[0]);
         return splitCommand;
     }
     public GameState checkCommand() throws MapBuildingException, ExitException {
-        switch (splitCommand()[0]) {
+        String[] splitedCommand = splitCommand();
+        switch (splitedCommand[0]) {
             case "start":
                 return gameState = new StartCommand().startGame();
             case "step":
-                System.out.println("step");
-                return gameState;
+                return gameState = new StepCommand(gameState, splitedCommand[1], splitedCommand[2]).stepGame();
             case "exit":
                 return gameState = new ExitCommand(gameState).exitGame();
             default:
-                System.out.println("Unknown command "+splitCommand()[0]);
+                System.out.println("Unknown command "+splitedCommand[0]);
                 return gameState;
         }
     }
