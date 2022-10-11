@@ -3,6 +3,7 @@ package hu.sebestyen.foxandhounds.service.command;
 import hu.sebestyen.foxandhounds.model.GameState;
 import hu.sebestyen.foxandhounds.service.exception.MapBuildingException;
 import hu.sebestyen.foxandhounds.service.exception.ExitException;
+import hu.sebestyen.foxandhounds.service.randomhound.RandomHound;
 
 public class GameCommands {
 
@@ -25,7 +26,13 @@ public class GameCommands {
             case "start":
                 return gameState = new StartCommand().startGame();
             case "step":
-                return gameState = new StepCommand(gameState, splitedCommand[1], splitedCommand[2]).stepGame();
+                if(splitedCommand.length==3) {
+                    gameState = new StepCommand(gameState, splitedCommand[1], splitedCommand[2]).stepGame();
+                    return gameState = new RandomHound(gameState).randomHound();
+                }else {
+                    System.out.println("Wrong step command!");
+                    return gameState;
+                }
             case "exit":
                 return gameState = new ExitCommand(gameState).exitGame();
             default:
