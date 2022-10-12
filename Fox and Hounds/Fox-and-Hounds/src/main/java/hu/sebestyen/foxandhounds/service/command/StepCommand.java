@@ -3,6 +3,9 @@ package hu.sebestyen.foxandhounds.service.command;
 import hu.sebestyen.foxandhounds.model.GameState;
 import hu.sebestyen.foxandhounds.model.MapVO;
 
+/**
+ * Ez az osztály a step parancsot működteti.
+ */
 public class StepCommand {
 
     private GameState gameState;
@@ -15,9 +18,14 @@ public class StepCommand {
         this.rightRoLeftFox = rightRoLeftFox;
     }
 
+    /**
+     * Leellenörzi, hogy a be írt step parancsot el lehet-e végezni és annak megfelelő játékállást ad vissza.
+     *
+     * @return A step parancs elvégzése után kapott játékállást adja vissza.
+     */
     public GameState stepGame() {
-        char[][] map = gameState.getMapVo().getMap();
-        MapVO mapVO =gameState.getMapVo();
+        char[][] map = gameState.getMapVO().getMap();
+        MapVO mapVO = gameState.getMapVO();
         int[] fox = new int[2];
         fox[0] = gameState.getFox()[0];
         fox[1] = gameState.getFox()[1];
@@ -25,22 +33,22 @@ public class StepCommand {
             case "up":
                 switch (rightRoLeftFox) {
                     case "right":
-                        if(gameState.getFox()[1]<gameState.getMapVo().getMapSize()-1&&map[fox[0]-1][fox[1]+1]=='_') {
-                            map[fox[0]][fox[1]]='_';
-                            fox[0]-=1;
-                            fox[1]+=1;
-                            map[fox[0]][fox[1]]='F';
-                            gameState.getMapVo().setMap(map);
+                        if (gameState.getFox()[1] < gameState.getMapVO().getMapSize() - 1 && map[fox[0] - 1][fox[1] + 1] == '_') {
+                            map[fox[0]][fox[1]] = '_';
+                            fox[0] -= 1;
+                            fox[1] += 1;
+                            map[fox[0]][fox[1]] = 'F';
+                            gameState.getMapVO().setMap(map);
                             gameState.setFox(fox);
                         }
                         return gameState;
                     case "left":
-                        if(gameState.getFox()[1]>0&&map[fox[0]-1][fox[1]-1]=='_') {
-                            map[fox[0]][fox[1]]='_';
-                            fox[0]-=1;
-                            fox[1]-=1;
-                            map[fox[0]][fox[1]]='F';
-                            gameState.getMapVo().setMap(map);
+                        if (gameState.getFox()[1] > 0 && map[fox[0] - 1][fox[1] - 1] == '_') {
+                            map[fox[0]][fox[1]] = '_';
+                            fox[0] -= 1;
+                            fox[1] -= 1;
+                            map[fox[0]][fox[1]] = 'F';
+                            gameState.getMapVO().setMap(map);
                             gameState.setFox(fox);
                         }
                         return gameState;
@@ -48,25 +56,25 @@ public class StepCommand {
                         return gameState;
                 }
             case "down":
-                if(gameState.getFox()[0]<gameState.getMapVo().getMapSize()-1) {
+                if (gameState.getFox()[0] < gameState.getMapVO().getMapSize() - 1) {
                     switch (rightRoLeftFox) {
                         case "right":
-                            if (gameState.getFox()[1] < gameState.getMapVo().getMapSize() - 1&&map[fox[0]+1][fox[1]+1]=='_') {
+                            if (gameState.getFox()[1] < gameState.getMapVO().getMapSize() - 1 && map[fox[0] + 1][fox[1] + 1] == '_') {
                                 map[fox[0]][fox[1]] = '_';
                                 fox[0] += 1;
                                 fox[1] += 1;
                                 map[fox[0]][fox[1]] = 'F';
-                                gameState.getMapVo().setMap(map);
+                                gameState.getMapVO().setMap(map);
                                 gameState.setFox(fox);
                             }
                             return gameState;
                         case "left":
-                            if(gameState.getFox()[1]>0&&map[fox[0]+1][fox[1]-1]=='_') {
-                                map[fox[0]][fox[1]]='_';
-                                fox[0]+=1;
-                                fox[1]-=1;
-                                map[fox[0]][fox[1]]='F';
-                                gameState.getMapVo().setMap(map);
+                            if (gameState.getFox()[1] > 0 && map[fox[0] + 1][fox[1] - 1] == '_') {
+                                map[fox[0]][fox[1]] = '_';
+                                fox[0] += 1;
+                                fox[1] -= 1;
+                                map[fox[0]][fox[1]] = 'F';
+                                gameState.getMapVO().setMap(map);
                                 gameState.setFox(fox);
                             }
                             return gameState;
@@ -74,6 +82,7 @@ public class StepCommand {
                             return gameState;
                     }
                 }
+                break;
             default:
                 break;
         }

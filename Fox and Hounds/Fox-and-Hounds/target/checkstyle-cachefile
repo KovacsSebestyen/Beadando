@@ -1,0 +1,16 @@
+#Thu Oct 13 00:54:46 CEST 2022
+configuration*?=15A515F65F82CEAA62D365C3110799422D5DC9D5
+C\:\\3_Szemeszter\\beadand\u00F3\\Fox\ and\ Hounds\\Fox-and-Hounds\\src\\main\\java\\hu\\sebestyen\\foxandhounds\\service\\command\\ExitCommand.java=1665606418900
+C\:\\3_Szemeszter\\beadand\u00F3\\Fox\ and\ Hounds\\Fox-and-Hounds\\src\\main\\java\\hu\\sebestyen\\foxandhounds\\service\\command\\StepCommand.java=1665608688192
+C\:\\3_Szemeszter\\beadand\u00F3\\Fox\ and\ Hounds\\Fox-and-Hounds\\src\\main\\java\\hu\\sebestyen\\foxandhounds\\service\\command\\GameCommands.java=1665606773850
+C\:\\3_Szemeszter\\beadand\u00F3\\Fox\ and\ Hounds\\Fox-and-Hounds\\src\\main\\java\\hu\\sebestyen\\foxandhounds\\model\\GameState.java=1665605262104
+C\:\\3_Szemeszter\\beadand\u00F3\\Fox\ and\ Hounds\\Fox-and-Hounds\\src\\main\\java\\hu\\sebestyen\\foxandhounds\\model\\MapVO.java=1665606000885
+C\:\\3_Szemeszter\\beadand\u00F3\\Fox\ and\ Hounds\\Fox-and-Hounds\\src\\main\\java\\hu\\sebestyen\\foxandhounds\\service\\exception\\ExitException.java=1665608925239
+C\:\\3_Szemeszter\\beadand\u00F3\\Fox\ and\ Hounds\\Fox-and-Hounds\\src\\main\\java\\hu\\sebestyen\\foxandhounds\\Main.java=1665610612376
+C\:\\3_Szemeszter\\beadand\u00F3\\Fox\ and\ Hounds\\Fox-and-Hounds\\src\\main\\java\\hu\\sebestyen\\foxandhounds\\service\\map\\MapBuilder.java=1665609620211
+C\:\\3_Szemeszter\\beadand\u00F3\\Fox\ and\ Hounds\\Fox-and-Hounds\\src\\main\\java\\hu\\sebestyen\\foxandhounds\\service\\randomhound\\RandomHound.java=1665609850495
+C\:\\3_Szemeszter\\beadand\u00F3\\Fox\ and\ Hounds\\Fox-and-Hounds\\src\\main\\java\\hu\\sebestyen\\foxandhounds\\service\\exception\\MapBuildingException.java=1665608937915
+module-resource*?\:checkstyle-xpath-suppressions.xml=95B29FA88985ABFE6D430F1FFA670239E5B71670
+module-resource*?\:checkstyle-suppressions.xml=BC4AEF97739EF15ECB3DCE2BFA649AC801B4F36
+C\:\\3_Szemeszter\\beadand\u00F3\\Fox\ and\ Hounds\\Fox-and-Hounds\\src\\main\\java\\hu\\sebestyen\\foxandhounds\\service\\command\\StartCommand.java=1665607552081
+C\:\\3_Szemeszter\\beadand\u00F3\\Fox\ and\ Hounds\\Fox-and-Hounds\\src\\main\\java\\hu\\sebestyen\\foxandhounds\\service\\validator\\Validator.java=1665610447318

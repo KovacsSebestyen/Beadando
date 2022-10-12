@@ -1,9 +1,12 @@
 package hu.sebestyen.foxandhounds.service.randomhound;
 
-import hu.sebestyen.foxandhounds.model.GameState;
-
 import java.util.Random;
 
+import hu.sebestyen.foxandhounds.model.GameState;
+
+/**
+ * Ez az osztály foglalkozik a kutyák lépésével.
+ */
 public class RandomHound {
 
     private GameState gameState;
@@ -12,11 +15,16 @@ public class RandomHound {
         this.gameState = gameState;
     }
 
+    /**
+     * Ez ellenőrzi és hajta végre a kutyák lépését.
+     *
+     * @return Vissza adja a kutyák lépése után keletkezett játékállást.
+     */
     public GameState randomHound() {
         Random rand = new Random();
-        int size = gameState.getMapVo().getMapSize();
+        int size = gameState.getMapVO().getMapSize();
         int[][] hound = gameState.getHounds();
-        char[][] map = gameState.getMapVo().getMap();
+        char[][] map = gameState.getMapVO().getMap();
         int houndNumber;
         int randomStep = 0;
         boolean wrong;
@@ -60,7 +68,7 @@ public class RandomHound {
                     hound[houndNumber][0] += 1;
                     hound[houndNumber][1] -= 1;
                     map[hound[houndNumber][0]][hound[houndNumber][1]] = 'H';
-                    gameState.getMapVo().setMap(map);
+                    gameState.getMapVO().setMap(map);
                     gameState.setHounds(hound);
                     return gameState;
                 case 1:
@@ -68,14 +76,13 @@ public class RandomHound {
                     hound[houndNumber][0] += 1;
                     hound[houndNumber][1] += 1;
                     map[hound[houndNumber][0]][hound[houndNumber][1]] = 'H';
-                    gameState.getMapVo().setMap(map);
+                    gameState.getMapVO().setMap(map);
                     gameState.setHounds(hound);
                     return gameState;
                 default:
                     return gameState;
             }
-        }
-        else {
+        } else {
             return gameState;
         }
     }

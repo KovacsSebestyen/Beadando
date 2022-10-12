@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RandomHound.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Fox-and-Hounds</a> &gt; <a href="index.source.html" class="el_package">hu.sebestyen.foxandhounds.service.randomhound</a> &gt; <span class="el_source">RandomHound.java</span></div><h1>RandomHound.java</h1><pre class="source lang-java linenums">package hu.sebestyen.foxandhounds.service.randomhound;
+
+import java.util.Random;
+
+import hu.sebestyen.foxandhounds.model.GameState;
+
+/**
+ * Ez az osztály foglalkozik a kutyák lépésével.
+ */
+public class RandomHound {
+
+    private GameState gameState;
+
+<span class="nc" id="L14">    public RandomHound(GameState gameState) {</span>
+<span class="nc" id="L15">        this.gameState = gameState;</span>
+<span class="nc" id="L16">    }</span>
+
+    /**
+     * Ez ellenőrzi és hajta végre a kutyák lépését.
+     *
+     * @return Vissza adja a kutyák lépése után keletkezett játékállást.
+     */
+    public GameState randomHound() {
+<span class="nc" id="L24">        Random rand = new Random();</span>
+<span class="nc" id="L25">        int size = gameState.getMapVO().getMapSize();</span>
+<span class="nc" id="L26">        int[][] hound = gameState.getHounds();</span>
+<span class="nc" id="L27">        char[][] map = gameState.getMapVO().getMap();</span>
+        int houndNumber;
+<span class="nc" id="L29">        int randomStep = 0;</span>
+        boolean wrong;
+<span class="nc" id="L31">        int max = 0;</span>
+        do {
+<span class="nc" id="L33">            wrong = false;</span>
+<span class="nc" id="L34">            houndNumber = rand.nextInt(size / 2);</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">            if (hound[houndNumber][0] != size - 1) {</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">                if (hound[houndNumber][1] == 0) {</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">                    if (map[hound[houndNumber][0] + 1][hound[houndNumber][1] + 1] == '_') {</span>
+<span class="nc" id="L38">                        randomStep = 1;</span>
+                    } else {
+<span class="nc" id="L40">                        wrong = true;</span>
+                    }
+<span class="nc bnc" id="L42" title="All 2 branches missed.">                } else if (hound[houndNumber][1] == size - 1) {</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">                    if (map[hound[houndNumber][0] + 1][hound[houndNumber][1] - 1] == '_') {</span>
+<span class="nc" id="L44">                        randomStep = 0;</span>
+                    } else {
+<span class="nc" id="L46">                        wrong = true;</span>
+                    }
+<span class="nc bnc" id="L48" title="All 4 branches missed.">                } else if (map[hound[houndNumber][0] + 1][hound[houndNumber][1] + 1] == '_' &amp;&amp;</span>
+                        map[hound[houndNumber][0] + 1][hound[houndNumber][1] - 1] == '_') {
+<span class="nc" id="L50">                    randomStep = rand.nextInt(2);</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">                } else if (map[hound[houndNumber][0] + 1][hound[houndNumber][1] + 1] == '_') {</span>
+<span class="nc" id="L52">                    randomStep = 1;</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">                } else if (map[hound[houndNumber][0] + 1][hound[houndNumber][1] - 1] == '_') {</span>
+<span class="nc" id="L54">                    randomStep = 0;</span>
+                } else {
+<span class="nc" id="L56">                    wrong = true;</span>
+                }
+            } else {
+<span class="nc" id="L59">                wrong = true;</span>
+            }
+<span class="nc" id="L61">            max++;</span>
+<span class="nc bnc" id="L62" title="All 4 branches missed.">        } while (wrong &amp;&amp; max &lt;= 10);</span>
+
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        if (max &lt; 10) {</span>
+<span class="nc bnc" id="L65" title="All 3 branches missed.">            switch (randomStep) {</span>
+                case 0:
+<span class="nc" id="L67">                    map[hound[houndNumber][0]][hound[houndNumber][1]] = '_';</span>
+<span class="nc" id="L68">                    hound[houndNumber][0] += 1;</span>
+<span class="nc" id="L69">                    hound[houndNumber][1] -= 1;</span>
+<span class="nc" id="L70">                    map[hound[houndNumber][0]][hound[houndNumber][1]] = 'H';</span>
+<span class="nc" id="L71">                    gameState.getMapVO().setMap(map);</span>
+<span class="nc" id="L72">                    gameState.setHounds(hound);</span>
+<span class="nc" id="L73">                    return gameState;</span>
+                case 1:
+<span class="nc" id="L75">                    map[hound[houndNumber][0]][hound[houndNumber][1]] = '_';</span>
+<span class="nc" id="L76">                    hound[houndNumber][0] += 1;</span>
+<span class="nc" id="L77">                    hound[houndNumber][1] += 1;</span>
+<span class="nc" id="L78">                    map[hound[houndNumber][0]][hound[houndNumber][1]] = 'H';</span>
+<span class="nc" id="L79">                    gameState.getMapVO().setMap(map);</span>
+<span class="nc" id="L80">                    gameState.setHounds(hound);</span>
+<span class="nc" id="L81">                    return gameState;</span>
+                default:
+<span class="nc" id="L83">                    return gameState;</span>
+            }
+        } else {
+<span class="nc" id="L86">            return gameState;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

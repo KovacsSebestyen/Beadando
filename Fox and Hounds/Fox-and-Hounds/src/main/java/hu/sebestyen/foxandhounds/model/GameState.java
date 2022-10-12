@@ -1,14 +1,17 @@
 package hu.sebestyen.foxandhounds.model;
 
+/**
+ * A jelenlegi játékálást tartalmazza.
+ */
 public class GameState {
-    private MapVO MapVo;
+    private MapVO mapVO;
     private boolean isMapExist;
     private boolean playerDontWantToExit;
     private int[] fox;
     private int[][] hounds;
 
-    public GameState(MapVO mapVo, boolean isMapExist, boolean playerDontWantToExit, int[] fox, int[][] hounds) {
-        MapVo = mapVo;
+    public GameState(MapVO mapVO, boolean isMapExist, boolean playerDontWantToExit, int[] fox, int[][] hounds) {
+        this.mapVO = mapVO;
         this.isMapExist = isMapExist;
         this.playerDontWantToExit = playerDontWantToExit;
         this.fox = fox;
@@ -30,6 +33,7 @@ public class GameState {
     public void setHounds(int[][] hounds) {
         this.hounds = hounds;
     }
+
     public boolean isMapExist() {
         return isMapExist;
     }
@@ -38,12 +42,12 @@ public class GameState {
         isMapExist = mapExist;
     }
 
-    public MapVO getMapVo() {
-        return MapVo;
+    public MapVO getMapVO() {
+        return mapVO;
     }
 
-    public void setMapVo(MapVO mapVo) {
-        MapVo = mapVo;
+    public void setMapVO(MapVO mapVO) {
+        this.mapVO = mapVO;
     }
 
     public boolean isPlayerDontWantToExit() {

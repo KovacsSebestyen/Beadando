@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StepCommand.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Fox-and-Hounds</a> &gt; <a href="index.source.html" class="el_package">hu.sebestyen.foxandhounds.service.command</a> &gt; <span class="el_source">StepCommand.java</span></div><h1>StepCommand.java</h1><pre class="source lang-java linenums">package hu.sebestyen.foxandhounds.service.command;
+
+import hu.sebestyen.foxandhounds.model.GameState;
+import hu.sebestyen.foxandhounds.model.MapVO;
+
+/**
+ * Ez az osztály a step parancsot működteti.
+ */
+public class StepCommand {
+
+    private GameState gameState;
+    private String upRoDownFox;
+    private String rightRoLeftFox;
+
+<span class="nc" id="L15">    public StepCommand(GameState gameState, String upRoDownFox, String rightRoLeftFox) {</span>
+<span class="nc" id="L16">        this.gameState = gameState;</span>
+<span class="nc" id="L17">        this.upRoDownFox = upRoDownFox;</span>
+<span class="nc" id="L18">        this.rightRoLeftFox = rightRoLeftFox;</span>
+<span class="nc" id="L19">    }</span>
+
+    /**
+     * Leellenörzi, hogy a be írt step parancsot el lehet-e végezni és annak megfelelő játékállást ad vissza.
+     *
+     * @return A step parancs elvégzése után kapott játékállást adja vissza.
+     */
+    public GameState stepGame() {
+<span class="nc" id="L27">        char[][] map = gameState.getMapVO().getMap();</span>
+<span class="nc" id="L28">        MapVO mapVO = gameState.getMapVO();</span>
+<span class="nc" id="L29">        int[] fox = new int[2];</span>
+<span class="nc" id="L30">        fox[0] = gameState.getFox()[0];</span>
+<span class="nc" id="L31">        fox[1] = gameState.getFox()[1];</span>
+<span class="nc bnc" id="L32" title="All 3 branches missed.">        switch (upRoDownFox) {</span>
+            case &quot;up&quot;:
+<span class="nc bnc" id="L34" title="All 3 branches missed.">                switch (rightRoLeftFox) {</span>
+                    case &quot;right&quot;:
+<span class="nc bnc" id="L36" title="All 4 branches missed.">                        if (gameState.getFox()[1] &lt; gameState.getMapVO().getMapSize() - 1 &amp;&amp; map[fox[0] - 1][fox[1] + 1] == '_') {</span>
+<span class="nc" id="L37">                            map[fox[0]][fox[1]] = '_';</span>
+<span class="nc" id="L38">                            fox[0] -= 1;</span>
+<span class="nc" id="L39">                            fox[1] += 1;</span>
+<span class="nc" id="L40">                            map[fox[0]][fox[1]] = 'F';</span>
+<span class="nc" id="L41">                            gameState.getMapVO().setMap(map);</span>
+<span class="nc" id="L42">                            gameState.setFox(fox);</span>
+                        }
+<span class="nc" id="L44">                        return gameState;</span>
+                    case &quot;left&quot;:
+<span class="nc bnc" id="L46" title="All 4 branches missed.">                        if (gameState.getFox()[1] &gt; 0 &amp;&amp; map[fox[0] - 1][fox[1] - 1] == '_') {</span>
+<span class="nc" id="L47">                            map[fox[0]][fox[1]] = '_';</span>
+<span class="nc" id="L48">                            fox[0] -= 1;</span>
+<span class="nc" id="L49">                            fox[1] -= 1;</span>
+<span class="nc" id="L50">                            map[fox[0]][fox[1]] = 'F';</span>
+<span class="nc" id="L51">                            gameState.getMapVO().setMap(map);</span>
+<span class="nc" id="L52">                            gameState.setFox(fox);</span>
+                        }
+<span class="nc" id="L54">                        return gameState;</span>
+                    default:
+<span class="nc" id="L56">                        return gameState;</span>
+                }
+            case &quot;down&quot;:
+<span class="nc bnc" id="L59" title="All 2 branches missed.">                if (gameState.getFox()[0] &lt; gameState.getMapVO().getMapSize() - 1) {</span>
+<span class="nc bnc" id="L60" title="All 3 branches missed.">                    switch (rightRoLeftFox) {</span>
+                        case &quot;right&quot;:
+<span class="nc bnc" id="L62" title="All 4 branches missed.">                            if (gameState.getFox()[1] &lt; gameState.getMapVO().getMapSize() - 1 &amp;&amp; map[fox[0] + 1][fox[1] + 1] == '_') {</span>
+<span class="nc" id="L63">                                map[fox[0]][fox[1]] = '_';</span>
+<span class="nc" id="L64">                                fox[0] += 1;</span>
+<span class="nc" id="L65">                                fox[1] += 1;</span>
+<span class="nc" id="L66">                                map[fox[0]][fox[1]] = 'F';</span>
+<span class="nc" id="L67">                                gameState.getMapVO().setMap(map);</span>
+<span class="nc" id="L68">                                gameState.setFox(fox);</span>
+                            }
+<span class="nc" id="L70">                            return gameState;</span>
+                        case &quot;left&quot;:
+<span class="nc bnc" id="L72" title="All 4 branches missed.">                            if (gameState.getFox()[1] &gt; 0 &amp;&amp; map[fox[0] + 1][fox[1] - 1] == '_') {</span>
+<span class="nc" id="L73">                                map[fox[0]][fox[1]] = '_';</span>
+<span class="nc" id="L74">                                fox[0] += 1;</span>
+<span class="nc" id="L75">                                fox[1] -= 1;</span>
+<span class="nc" id="L76">                                map[fox[0]][fox[1]] = 'F';</span>
+<span class="nc" id="L77">                                gameState.getMapVO().setMap(map);</span>
+<span class="nc" id="L78">                                gameState.setFox(fox);</span>
+                            }
+<span class="nc" id="L80">                            return gameState;</span>
+                        default:
+<span class="nc" id="L82">                            return gameState;</span>
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+<span class="nc" id="L89">        return gameState;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
