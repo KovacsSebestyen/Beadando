@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="hu.sebestyen.foxandhounds.service.map.MapBuilderTest" time="0.023" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="hu.sebestyen.foxandhounds.service.command.GameCommandsTest" time="0.161" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -61,8 +61,18 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="testBuildShouldThrowMapParsingExeptionWhenGivenNumberDoesntEvenNumber" classname="hu.sebestyen.foxandhounds.service.map.MapBuilderTest" time="0.003"/>
-  <testcase name="testBuildShouldThrowMapParsingExeptionWhenGivenNumberLessThen4" classname="hu.sebestyen.foxandhounds.service.map.MapBuilderTest" time="0.002"/>
-  <testcase name="testBuildShouldThrowMapParsingExeptionWhenGivenNumberMoreThen12" classname="hu.sebestyen.foxandhounds.service.map.MapBuilderTest" time="0.002"/>
-  <testcase name="testBuildShouldReturnNewParse" classname="hu.sebestyen.foxandhounds.service.map.MapBuilderTest" time="0.003"/>
+  <testcase name="testCheckCommandShouldGiveBackSameGameStateWhenStepCommandIsWrong" classname="hu.sebestyen.foxandhounds.service.command.GameCommandsTest" time="0.011"/>
+  <testcase name="testCheckCommandShouldGiveNewGameStateWhenCommandIsStart" classname="hu.sebestyen.foxandhounds.service.command.GameCommandsTest" time="0.042">
+    <system-out><![CDATA[?Size?: 
+]]></system-out>
+  </testcase>
+  <testcase name="testCheckCommandShouldGiveBackTheSameGameStateWhenStepCommandNotThreeWords" classname="hu.sebestyen.foxandhounds.service.command.GameCommandsTest" time="0.051">
+    <system-out><![CDATA[Wrong step command!
+]]></system-out>
+  </testcase>
+  <testcase name="testCheckCommandShouldGiveBackSameGameStateWhenWrongCommand" classname="hu.sebestyen.foxandhounds.service.command.GameCommandsTest" time="0.016">
+    <system-out><![CDATA[Unknown command asd
+]]></system-out>
+  </testcase>
+  <testcase name="testCheckCommandShouldGiveGameStateWithFalseWhenCommandIsExit" classname="hu.sebestyen.foxandhounds.service.command.GameCommandsTest" time="0.007"/>
 </testsuite>

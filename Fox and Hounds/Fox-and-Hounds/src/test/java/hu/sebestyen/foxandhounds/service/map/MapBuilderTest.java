@@ -17,7 +17,7 @@ public class MapBuilderTest {
             {'F','X','_','X'}
     };
 
-    private static MapVO exeptedMapOV = new MapVO(4,map);
+    private static MapVO exeptedMapVO = new MapVO(4,map);
 
     @Test
     public void testBuildShouldReturnNewParse() throws MapBuildingException {
@@ -25,10 +25,10 @@ public class MapBuilderTest {
         underTest = new MapBuilder(4);
 
         //then
-        MapVO result= underTest.build();
+        MapVO result = underTest.build();
 
         //when
-        assertEquals(exeptedMapOV, result);
+        assertEquals(exeptedMapVO, result);
     }
 
     @Test

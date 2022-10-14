@@ -10,9 +10,9 @@ public class ExitCommand {
 
     private GameState gameState;
 
-<span class="nc" id="L13">    public ExitCommand(GameState gameState) {</span>
-<span class="nc" id="L14">        this.gameState = gameState;</span>
-<span class="nc" id="L15">    }</span>
+<span class="fc" id="L13">    public ExitCommand(GameState gameState) {</span>
+<span class="fc" id="L14">        this.gameState = gameState;</span>
+<span class="fc" id="L15">    }</span>
 
     /**
      * Az az eljárás megnézi hogy milyen módon használja az exit parancsot.
@@ -21,11 +21,11 @@ public class ExitCommand {
      * @throws ExitException Akkor dobja ha a játék elindítása előtt akar kilépni a játékos.
      */
     public GameState exitGame() throws ExitException {
-<span class="nc bnc" id="L24" title="All 2 branches missed.">        if (gameState.isMapExist()) {</span>
-<span class="nc" id="L25">            gameState.setPlayerDontWantToExit(false);</span>
-<span class="nc" id="L26">            return gameState;</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (gameState.isMapExist()) {</span>
+<span class="fc" id="L25">            gameState.setPlayerDontWantToExit(false);</span>
+<span class="fc" id="L26">            return gameState;</span>
         } else {
-<span class="nc" id="L28">            throw new ExitException(&quot;ok bye :)&quot;);</span>
+<span class="fc" id="L28">            throw new ExitException(&quot;ok bye :)&quot;);</span>
         }
     }
 }

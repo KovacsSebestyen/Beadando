@@ -1,1 +1,6 @@
+hu\sebestyen\foxandhounds\service\validator\ValidatorTest.class
+hu\sebestyen\foxandhounds\service\command\ExitCommandTest.class
 hu\sebestyen\foxandhounds\service\map\MapBuilderTest.class
+hu\sebestyen\foxandhounds\service\command\StartCommandTest.class
+hu\sebestyen\foxandhounds\service\command\StepCommandTest.class
+hu\sebestyen\foxandhounds\service\command\GameCommandsTest.class

@@ -1,10 +1,10 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-Fox-and-Hounds,hu.sebestyen.foxandhounds.service.validator,Validator,345,0,40,0,36,0,23,0,3,0
-Fox-and-Hounds,hu.sebestyen.foxandhounds.service.command,StepCommand,368,0,27,0,49,0,17,0,2,0
-Fox-and-Hounds,hu.sebestyen.foxandhounds.service.command,GameCommands,115,0,10,0,20,0,9,0,3,0
-Fox-and-Hounds,hu.sebestyen.foxandhounds.service.command,ExitCommand,22,0,2,0,7,0,3,0,2,0
-Fox-and-Hounds,hu.sebestyen.foxandhounds.service.command,StartCommand,87,0,2,0,19,0,3,0,2,0
-Fox-and-Hounds,hu.sebestyen.foxandhounds.service.exception,ExitException,4,0,0,0,2,0,1,0,1,0
+Fox-and-Hounds,hu.sebestyen.foxandhounds.service.validator,Validator,0,345,6,34,0,36,6,17,0,3
+Fox-and-Hounds,hu.sebestyen.foxandhounds.service.command,StepCommand,0,368,9,18,0,49,9,8,0,2
+Fox-and-Hounds,hu.sebestyen.foxandhounds.service.command,GameCommands,17,98,3,7,1,19,2,7,0,3
+Fox-and-Hounds,hu.sebestyen.foxandhounds.service.command,ExitCommand,0,22,0,2,0,7,0,3,0,2
+Fox-and-Hounds,hu.sebestyen.foxandhounds.service.command,StartCommand,0,87,0,2,0,19,0,3,0,2
+Fox-and-Hounds,hu.sebestyen.foxandhounds.service.exception,ExitException,0,4,0,0,0,2,0,1,0,1
 Fox-and-Hounds,hu.sebestyen.foxandhounds.service.exception,MapBuildingException,0,4,0,0,0,2,0,1,0,1
 Fox-and-Hounds,hu.sebestyen.foxandhounds.service.randomhound,RandomHound,335,0,27,0,48,0,16,0,2,0
 Fox-and-Hounds,hu.sebestyen.foxandhounds.service.map,MapBuilder,0,146,0,22,0,30,0,15,0,4
